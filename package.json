@@ -1,0 +1,25 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "This is a discord bot.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "backpack dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Natunax@github.com/Natunax/discord_bot.git"
+  },
+  "author": "Oliver Dressler",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "backpack-core": "^0.8.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}
