@@ -88,23 +88,68 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/calls/conversations.js":
-/*!************************************!*\
-  !*** ./src/calls/conversations.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./src/calls/Conversations/conversationChoices.js":
+/*!********************************************************!*\
+  !*** ./src/calls/Conversations/conversationChoices.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-function takeConversation(msg) {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const conversationChoices = [{
+  msg: '!ping',
+  answer: 'pong'
+}, {
+  msg: '!hi',
+  answer: 'hi'
+}, {
+  msg: '!Wie geht es dir?',
+  answer: 'Gut und dir?'
+}];
+/* harmony default export */ __webpack_exports__["default"] = (conversationChoices);
+
+/***/ }),
+
+/***/ "./src/calls/Conversations/conversations.js":
+/*!**************************************************!*\
+  !*** ./src/calls/Conversations/conversations.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _conversationChoices__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./conversationChoices */ "./src/calls/Conversations/conversationChoices.js");
+/* eslint-disable no-restricted-syntax */
+
+
+let answer;
+
+function takeConversation(message) {
+  // ignore all messages of the bot itself
+  if (message.author.bot) return; // check if the messages starts with an !
+
+  if (lodash__WEBPACK_IMPORTED_MODULE_0___default.a.startsWith(message.content, '!')) {
+    for (const choice of _conversationChoices__WEBPACK_IMPORTED_MODULE_1__["default"]) {
+      if (choice.msg === message.content) {
+        answer = choice.answer;
+        break;
+      } else {
+        answer = 'Das verstehe ich nicht!';
+      }
+    } // eslint-disable-next-line consistent-return
+
+
+    return message.reply(answer);
   }
 }
 
-const conversationChoices = [{}];
-module.exports = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   takeConversation
-};
+});
 
 /***/ }),
 
@@ -121,8 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var discord_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(discord_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dotenv */ "dotenv");
 /* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(dotenv__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _calls_conversations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calls/conversations */ "./src/calls/conversations.js");
-/* harmony import */ var _calls_conversations__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_calls_conversations__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _calls_Conversations_conversations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calls/Conversations/conversations */ "./src/calls/Conversations/conversations.js");
 
 
 
@@ -130,12 +174,12 @@ dotenv__WEBPACK_IMPORTED_MODULE_1___default.a.config();
 const client = new discord_js__WEBPACK_IMPORTED_MODULE_0___default.a.Client();
 const {
   takeConversation
-} = _calls_conversations__WEBPACK_IMPORTED_MODULE_2___default.a;
+} = _calls_Conversations_conversations__WEBPACK_IMPORTED_MODULE_2__["default"];
+client.login(process.env.CLIENT_TOKEN);
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 client.on('message', takeConversation);
-client.login(process.env.CLIENT_TOKEN);
 
 /***/ }),
 
@@ -158,6 +202,17 @@ module.exports = require("discord.js");
 /***/ (function(module, exports) {
 
 module.exports = require("dotenv");
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
 
 /***/ })
 
