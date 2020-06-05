@@ -27,11 +27,12 @@ npm run dev
 * [x] - Message Function for Conversation
 * [ ] - Add more Conversation options
 * [ ] - Add a dice game
+* [ ] - Configure the Bot, so that he is only available in selected channels
 
 
 # Features
 
 ### Conversations
-Feel free to ask the Bot what do you want. Just put an "!" in front of your message -> !hi
+Feel free to ask the Bot what do you want. Just put an "!ego" in front of your message -> !ego hi
 
 ## MORE COMMING SOON

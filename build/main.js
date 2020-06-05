@@ -98,14 +98,26 @@ module.exports =
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const conversationChoices = [{
-  msg: '!ping',
+  msg: '!ego ping',
   answer: 'pong'
 }, {
-  msg: '!hi',
+  msg: '!ego hi',
   answer: 'hi'
 }, {
-  msg: '!Wie geht es dir?',
+  msg: '!ego Wie geht es dir?',
   answer: 'Gut und dir?'
+}, {
+  msg: '!ego lol',
+  answer: 'LOL'
+}, {
+  msg: '!ego Uhrzeit',
+  answer: `Es ist ${new Date().getHours()}:${new Date().getMinutes()} Uhr`
+}, {
+  msg: '!ego Datum',
+  answer: `Wir haben den ${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`
+}, {
+  msg: '!ego Was ist 1+1',
+  answer: '3'
 }];
 /* harmony default export */ __webpack_exports__["default"] = (conversationChoices);
 
@@ -132,7 +144,7 @@ function takeConversation(message) {
   // ignore all messages of the bot itself
   if (message.author.bot) return; // check if the messages starts with an !
 
-  if (lodash__WEBPACK_IMPORTED_MODULE_0___default.a.startsWith(message.content, '!')) {
+  if (lodash__WEBPACK_IMPORTED_MODULE_0___default.a.startsWith(message.content, '!ego')) {
     for (const choice of _conversationChoices__WEBPACK_IMPORTED_MODULE_1__["default"]) {
       if (choice.msg === message.content) {
         answer = choice.answer;
