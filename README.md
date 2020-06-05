@@ -1,7 +1,7 @@
 # Discord Bot 
 This is my Discord Bot.
 
-## Usage
+## Install
 * [1] invite the bot into your discord Server 
 
 !!! NOTICE : (at the moment the bot is only for my usage, at time i will make it public)
@@ -22,11 +22,16 @@ npm install
 npm run dev
 ```
 
-
 ## TODO
 * [x] - Add Token in index.js on client.connect
 * [x] - Message Function for Conversation
 * [ ] - Add more Conversation options
 * [ ] - Add a dice game
 
-# MORE COMMING SOON
+
+# Features
+
+### Conversations
+Feel free to ask the Bot what do you want. Just put an "!" in front of your message -> !hi
+
+## MORE COMMING SOON
